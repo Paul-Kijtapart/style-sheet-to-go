@@ -1,6 +1,8 @@
 <template>
   <div class="flex-box-view">
 
+    <!-- Flow: Row -->
+
     <div class="section">
 
       <!-- row-wrap layout-->
@@ -40,7 +42,7 @@
       <!-- row-nowrap layout-->
       <porlet class="flex-box-porlet">
         <div slot="header">
-          Flow: Row NoWrap -- align items
+          Flow: Row NoWrap -- align items : Center
         </div>
 
         <div class="row-nowrap-parent row-nowrap-parent--align-items">
@@ -70,17 +72,75 @@
 
     </div>
 
-    <!-- Column layout-->
-    <!--<porlet>-->
-    <!--<div slot="header">-->
-    <!--Flow: Column-->
-    <!--</div>-->
+    <!-- Flow: Column -->
+    <div class="section">
 
-    <!--<div v-for="item in items"-->
-    <!--:key="item.id">-->
-    <!--{{ item.label }}-->
-    <!--</div>-->
-    <!--</porlet>-->
+      <!-- column-wrap layout-->
+      <porlet class="flex-box-porlet">
+        <div slot="header">
+          Flow: Column Wrap
+        </div>
+
+        <div class="column-wrap-parent">
+          <div v-for="item in items"
+               :key="item.id"
+               class="flex-child">
+            {{ item.label }}
+          </div>
+        </div>
+      </porlet>
+
+    </div>
+
+    <div class="section">
+
+      <!-- row-nowrap layout-->
+      <porlet class="flex-box-porlet">
+        <div slot="header">
+          Flow: Row NoWrap
+        </div>
+
+        <div class="column-nowrap-parent">
+          <div v-for="item in items"
+               :key="item.id"
+               class="flex-child">
+            {{ item.label }}
+          </div>
+        </div>
+      </porlet>
+
+      <!-- row-nowrap layout-->
+      <porlet class="flex-box-porlet">
+        <div slot="header">
+          Flow: Column NoWrap -- align items : Center
+        </div>
+
+        <div class="column-nowrap-parent column-nowrap-parent--align-items">
+          <div v-for="item in items"
+               :key="item.id"
+               class="flex-child">
+            {{ item.label }}
+          </div>
+        </div>
+      </porlet>
+
+      <!-- row-nowrap--diff-child-flex layout-->
+      <porlet class="flex-box-porlet">
+        <div slot="header">
+          Flow: Column NoWrap : Different child flex
+        </div>
+
+        <div class="column-nowrap-parent column-nowrap-parent--dif-child-flex">
+          <div v-for="item in items"
+               :key="item.id"
+               class="flex-child">
+            {{ item.label }}
+          </div>
+        </div>
+
+      </porlet>
+
+    </div>
 
   </div>
 </template>
@@ -194,6 +254,42 @@
       align-self: flex-end;
     }
 
+  }
+
+  .column-wrap-parent {
+    // size
+    width: 500px;
+    height: 500px;
+
+    // display
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .column-nowrap-parent {
+    // size
+    width: 500px;
+    height: 500px;
+
+    // display
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  .column-nowrap-parent--dif-child-flex {
+
+    .flex-child:nth-child(2) {
+      align-self: center;
+    }
+
+    .flex-child:nth-child(4) {
+      align-self: flex-end;
+    }
+
+  }
+
+  .column-nowrap-parent--align-items {
+    align-items: center;
   }
 
 </style>
