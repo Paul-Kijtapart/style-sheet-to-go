@@ -6,7 +6,7 @@
       Home header
     </template>
 
-    Home body
+    Home body cool.
 
     <!-- footer -->
     <template slot="footer">
