@@ -5,6 +5,7 @@ import HelloWorld from '@/components/HelloWorld'
 // views
 import Home from '@/views/home';
 import FlexBox from '@/views/flex-box';
+import Grid from '@/views/grid';
 
 Vue.use(Router);
 
@@ -19,6 +20,11 @@ export default new Router({
       path: '/flexbox',
       name: 'flexbox',
       component: FlexBox
+    },
+    {
+      path: '/grid',
+      name: 'grid',
+      component: Grid
     }
   ]
 })

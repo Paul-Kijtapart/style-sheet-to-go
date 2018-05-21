@@ -4,7 +4,10 @@
     <!-- header-->
     <div slot="header"
          class="app-header">
-      <router-link to="/flexbox"> Flexbox showcases</router-link>
+
+      <router-link to="/flexbox"> Flexbox </router-link>
+      <router-link to="/grid"> Grid </router-link>
+
     </div>
 
     <div class="app-body">
