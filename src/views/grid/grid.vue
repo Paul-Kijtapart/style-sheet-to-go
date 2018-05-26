@@ -44,6 +44,23 @@
         <footer class="grid-child grid-child--footer"> Footer</footer>
       </div>
 
+      <!-- Display 3 -->
+      <div class="grid-parent grid-parent--3">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 4 -->
+      <div class="grid-parent grid-parent--4">
+        <header class="grid-child grid-child--header"> Header</header>
+        <aside class="grid-child grid-child--aside-1"> Aside 1</aside>
+        <section class="grid-child grid-child--section"> Section</section>
+        <footer class="grid-child grid-child--footer"> Footer</footer>
+      </div>
+
     </div>
 
     <!-- Footer -->
@@ -290,6 +307,74 @@
 
       // but this is better
       grid-column: left-sidebar-start / right-sidebar-end;
+    }
+  }
+
+  // grid-parent 3
+  .grid-parent--3 {
+
+    // fixed 5 rows with responsive height
+    /*grid-template-rows: 1fr 3fr 3fr 3fr 1fr; // all responsive*/
+
+    // with this, 4th & 5th columns will take the remaining spaces
+    grid-template-rows: 20px 30px 40px 2fr 1fr; // all responsive
+
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+    }
+
+    .grid-child--c {
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
+    }
+  }
+
+  // grid-parent 4
+  .grid-parent--4 {
+
+    // mobile
+    grid-template-areas: "header" "aside-1" "section" "footer";
+    grid-template-rows: 1fr 1fr 10fr 1fr;
+
+    // md
+    @media (min-width: 700px) {
+
+      // layout
+      // TIPS: if you want EMPTY space => use '....' or just '.' to indicate Empty Space
+      grid-template-areas: "header header" "aside-1 section" "footer footer";
+
+      // customize size
+      grid-template-columns: 1fr 9fr;
+      grid-template-rows: 1fr 10fr 1fr;
+    }
+
+    .grid-child--header {
+      grid-area: header;
+    }
+
+    .grid-child--aside-1 {
+      grid-area: aside-1;
+    }
+
+    .grid-child--aside-2 {
+      grid-area: aside-2;
+    }
+
+    .grid-child--section {
+      grid-area: section;
+    }
+
+    .grid-child--footer {
+      grid-area: footer;
     }
   }
 
