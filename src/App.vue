@@ -76,16 +76,18 @@
 
       <!-- content -->
       <v-content>
-        <v-container fluid fill-height class="grey lighten-4">
-          <v-layout justify-center align-center>
-            <v-flex shrink>
 
-              <!-- content that will be inserted by vue-router-->
-              <router-view/>
+        <!-- todo: read vuetify on how below work -->
+        <!--<v-container fluid fill-height class="grey lighten-4">-->
+        <!--<v-layout justify-center align-center>-->
+        <!--<v-flex shrink>-->
+        <!--</v-flex>-->
+        <!--</v-layout>-->
+        <!--</v-container>-->
 
-            </v-flex>
-          </v-layout>
-        </v-container>
+        <!-- content that will be inserted by vue-router-->
+        <router-view/>
+
       </v-content>
 
     </v-app>
