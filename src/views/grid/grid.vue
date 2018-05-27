@@ -61,10 +61,81 @@
         <footer class="grid-child grid-child--footer"> Footer</footer>
       </div>
 
-    </div>
+      <!-- Display 5 -->
+      <div class="grid-parent grid-parent--5">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
 
+      <!-- Display 6 -->
+      <div class="grid-parent grid-parent--6">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 7 -->
+      <div class="grid-parent grid-parent--7">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 8 -->
+      <div class="grid-parent grid-parent--8">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 9 -->
+      <div class="grid-parent grid-parent--9">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 10 (Re-order) -->
+      <div class="grid-parent grid-parent--10">
+        <div v-for="item in items"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+      <!-- Display 11 (all-together) -->
+      <div class="grid-parent grid-parent--11">
+        <aside class="grid-child grid-child--aside-1"> Aside 1</aside>
+        <aside class="grid-child grid-child--aside-2">Aside 2</aside>
+        <aside class="grid-child grid-child--aside-3">Aside 3</aside>
+        <section class="grid-child grid-child--section"> Section</section>
+      </div>
+
+      <!-- Display 12 (all-together) -->
+      <div class="grid-parent grid-parent--12">
+        <div v-for="item in items2"
+             :key="item.id"
+             :class="['grid-child', 'grid-child--'+item.id]">
+          {{ item.label }}
+        </div>
+      </div>
+
+    </div>
     <!-- Footer -->
     <div slot="footer">
+      Footer
     </div>
 
   </porlet>
@@ -109,6 +180,33 @@
           },
         ]
       };
+    },
+    computed: {
+      items2: function () {
+        let res = this.items.concat();
+
+        res.push(
+          {
+            label: "G",
+            id: "g"
+          },
+          {
+            label: "H",
+            id: "h"
+          },
+          {
+            label: "I",
+            id: "i"
+          },
+          {
+            label: "J",
+            id: "j"
+          },
+        );
+
+        return res;
+
+      }
     }
   }
 </script>
@@ -375,6 +473,220 @@
 
     .grid-child--footer {
       grid-area: footer;
+    }
+  }
+
+  // grid-parent 5
+  .grid-parent--5 {
+
+    /*grid-template-columns: 100px 100px; // fixed 2 columns*/
+
+    // minmax => want it to take up 100px at the very least.
+    // take up all available spaces at the most
+    /*grid-template-columns: minmax(100px, auto) minmax(100px, auto); // fixed 2 columns*/
+
+    /*grid-template-columns: minmax(min-content, 1fr) minmax(max-content, 4fr); // fixed 2 columns*/
+
+    grid-template-columns: minmax(100px, 1fr) minmax(100px, 4fr); // fixed 2 columns
+
+    .grid-child--header {
+    }
+
+    .grid-child--aside-1 {
+    }
+
+    .grid-child--aside-2 {
+    }
+
+    .grid-child--section {
+    }
+
+    .grid-child--footer {
+    }
+  }
+
+  // grid-parent 6
+  .grid-parent--6 {
+
+    // make 6 columns - each with 15px
+    /*grid-template-columns: repeat(6, 15px);*/
+
+    // make 6 columns - each with different width size
+    grid-template-columns: repeat(2, min-content 50px 150px);
+
+    grid-template-columns: repeat(2, minmax(20px, auto) minmax(20px, auto) minmax(20px, auto));
+  }
+
+  // grid parent 7
+  .grid-parent--7 {
+
+    // auto-fill enables filling columns for the whole spaces (responsive)
+    /*grid-template-columns: repeat(auto-fill, 100px);*/
+
+    // TIP: this will ensures all spaces are filled beautifully
+    // Again: minmax(100px, auto) => least width = 100px. and try to take up all remaining space
+    /*grid-template-columns: repeat(auto-fill, minmax(100px, auto));*/
+
+    grid-template-columns: repeat(auto-fill, minmax(100px, auto) minmax(10px, auto));
+
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+    }
+
+    .grid-child--c {
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
+    }
+  }
+
+  // grid parent 8 (Customized flow)
+  .grid-parent--8 {
+
+    // dense = auto fill empty space
+    // column = swap the axis (e.g. horizontal bar => vertical bar)
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    // update layout of the grid
+    grid-auto-flow: column; // use dense to fill any remaining space
+
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+      grid-column: span 3;
+    }
+
+    .grid-child--c {
+      grid-column: span 3;
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
+      grid-column: span 3;
+    }
+  }
+
+  // grid parent 9
+  .grid-parent--9 {
+
+    /*grid-template-rows: ;*/
+    grid-template-rows: 4fr 6fr; // target 1st and 2nd rows
+
+    // change default size for unset specified rows
+    grid-auto-rows: 1fr 12fr; // 1fr-and-12fr repeated version
+
+    grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+    }
+
+    .grid-child--c {
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
+    }
+  }
+
+  // grid parent 10 (Order to change item order)
+  .grid-parent--10 {
+
+    // each child has order 0 (default)
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+    }
+
+    .grid-child--c {
+      order: 1;
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
+    }
+  }
+
+  // grid parent 11 (all together)
+  .grid-parent--11 {
+
+    // all together
+    /*grid-template-areas: "aside-1 aside-2 aside-3" "section section aside-3";*/
+    /*grid-template-rows: [header-top] 1fr [header-bottom main-top] 5fr [main-bottom];*/
+    /*grid-template-columns: 2fr auto 1fr;*/
+
+    // which is equivalent to below
+    grid-template: [header-top] "aside-1 aside-2 aside-3" 1fr [header-bottom] "section section aside-3" 5fr [main-bottom] / 2fr auto 1fr;
+
+    .grid-child--aside-1 {
+      grid-area: aside-1;
+    }
+
+    .grid-child--aside-2 {
+      grid-area: aside-2;
+    }
+
+    .grid-child--aside-3 {
+      grid-area: aside-3;
+    }
+
+    .grid-child--section {
+      grid-area: section;
+    }
+  }
+
+  .grid-parent--12 {
+
+    //grid: 3fr 14fr / 4fr 2fr; // however this will only his first 2 rows and apply 2 columns
+
+    // if we want to repeat the 3fr 14fr pattern
+    grid: auto-flow 3fr 14fr / 4fr 2fr; // however this will only his first 2 rows and apply 2 columns
+
+    .grid-child--a {
+    }
+
+    .grid-child--b {
+    }
+
+    .grid-child--c {
+    }
+
+    .grid-child--d {
+    }
+
+    .grid-child--e {
+    }
+
+    .grid-child--f {
     }
   }
 
