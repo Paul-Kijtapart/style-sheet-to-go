@@ -3,9 +3,10 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 
 // views
-const Home = () => import('@/views/home');
-const FlexBox = () => import('@/views/flex-box');
-const Grid = () => import('@/views/grid');
+// const Home = () => import('@/views/home');
+import Home from "@/views/home";
+import FlexBox from "@/views/flex-box";
+import Grid from "@/views/grid";
 
 Vue.use(Router);
 
